@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         # Run the steps below with the following versions of Node.js
-        node-version: [12.x]
+        node-version: [14.x]
     steps:
       # Fetch the latest commit
       - name: Checkout
@@ -46,7 +46,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.x
 
       - name: Install
         run: npm ci
