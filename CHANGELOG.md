@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/2wce/paystack-shopping/compare/v1.0.0...v1.1.0) (2021-09-20)
+
+
+### Features
+
+* setup db + initial migration ([b985d28](https://github.com/2wce/paystack-shopping/commit/b985d282e35f49fdf1d87bb472d9e056e1cd1be9))
+
 # 1.0.0 (2021-09-20)
 
 
