@@ -1,5 +1,5 @@
 <h1 align="center">
-  Paystack Shopping Application
+  Shopping Cart Application
 </h1>
 
 ![Release](https://github.com/2wce/paystack-shopping/actions/workflows/release.yml/badge.svg)
