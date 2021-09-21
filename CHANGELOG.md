@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/2wce/paystack-shopping/compare/v1.6.0...v1.7.0) (2021-09-21)
+
+
+### Features
+
+* add checkout mutation ([ca9c5e8](https://github.com/2wce/paystack-shopping/commit/ca9c5e8b03472029151400faf91ed59d23cf854f))
+
 # [1.6.0](https://github.com/2wce/paystack-shopping/compare/v1.5.0...v1.6.0) (2021-09-21)
 
 
