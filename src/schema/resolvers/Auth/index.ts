@@ -30,7 +30,7 @@ export default {
           })
 
           if (!user) {
-            throw new AuthenticationError('Identifier invalid.')
+            throw new AuthenticationError('User not found.')
           }
 
           return issue({ id: user.id })
