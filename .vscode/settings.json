@@ -42,5 +42,6 @@
     "!Select sequence",
     "!Split",
     "!Split sequence"
-  ]
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib"
 }
