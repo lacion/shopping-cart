@@ -1,3 +1,19 @@
+# [1.2.0](https://github.com/2wce/paystack-shopping/compare/v1.1.0...v1.2.0) (2021-09-21)
+
+
+### Bug Fixes
+
+* parse database url for test workflow ([7f6a1d4](https://github.com/2wce/paystack-shopping/commit/7f6a1d48d936674467fafdf65b7a3caef559fec0))
+* update auth test snapshot ([afc4dd1](https://github.com/2wce/paystack-shopping/commit/afc4dd1625cfec3bda397fb8c29bd6822d92c395))
+
+
+### Features
+
+* add edge case tests for auth ([6a34889](https://github.com/2wce/paystack-shopping/commit/6a34889b40103f99cd2de987bbc414bb54053814))
+* add login query ([48a79b7](https://github.com/2wce/paystack-shopping/commit/48a79b72df611f065097bb9c2ae416392ba0176b))
+* setup jest ([9394517](https://github.com/2wce/paystack-shopping/commit/9394517ed25460edc4074a39077fc7a07b97a64a))
+* setup schema ([5cb197f](https://github.com/2wce/paystack-shopping/commit/5cb197feeacf7f33a77678a26eb4a7a32d7c6401))
+
 # [1.1.0](https://github.com/2wce/paystack-shopping/compare/v1.0.0...v1.1.0) (2021-09-20)
 
 
