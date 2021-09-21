@@ -1,4 +1,4 @@
-import { Prisma, ProductWhereInput } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 import { ApolloError } from 'apollo-server'
 import { QueryProductsArgs } from '../../../generated'
 import { Context, formatError } from '../../../utils'
@@ -12,7 +12,7 @@ export default {
     ) => {
       try {
         const { categoryId, name, skip, take } = filterBy
-        let and: Prisma.Enumerable<ProductWhereInput> = []
+        let and: Prisma.Enumerable<Prisma.ProductWhereInput> = []
 
         // no specific filter passed.
         if (!categoryId && !name) {
