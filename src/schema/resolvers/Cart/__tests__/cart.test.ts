@@ -64,3 +64,21 @@ describe('Cart - Remove from Cart', () => {
     expect(result).toMatchSnapshot()
   })
 })
+
+describe('Cart - Checkout Cart', () => {
+  it('returns an error if cart id not found', async () => {
+    // setup
+    const {
+      Mutation: { checkout },
+    } = resolvers
+
+    mockCtx.prisma.cart.findFirst.mockResolvedValue(null)
+    let args = { cartId: 'my-cart-id' }
+
+    // test
+    const result = await checkout({}, args, context)
+
+    // assert
+    expect(result).toMatchSnapshot()
+  })
+})
