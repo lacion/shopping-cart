@@ -48,7 +48,6 @@ describe('Product - get products', () => {
     // test
     const result = await products({}, args, context)
 
-    console.log({ result })
     // assert
     expect(Array.isArray(result)).toBe(true)
   })
