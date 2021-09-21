@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItem - update quantity returns an error if cart item id is not provided 1`] = `[Error: Product out of stock]`;
+
+exports[`CartItem - update quantity returns an error if invalid quantity is parsed 1`] = `[Error: Invalid quantity]`;
+
+exports[`CartItem - update quantity returns an error if product is out of stock 1`] = `[Error: Product out of stock]`;
