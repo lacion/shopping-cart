@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/2wce/paystack-shopping/compare/v1.4.0...v1.5.0) (2021-09-21)
+
+
+### Features
+
+* update cart item quantity ([812465e](https://github.com/2wce/paystack-shopping/commit/812465e3374c87ec4e48115f4a617730043328d1))
+
 # [1.4.0](https://github.com/2wce/paystack-shopping/compare/v1.3.0...v1.4.0) (2021-09-21)
 
 
