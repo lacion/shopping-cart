@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/2wce/paystack-shopping/compare/v1.5.0...v1.6.0) (2021-09-21)
+
+
+### Features
+
+* add remove from cart mutation ([e3de1a4](https://github.com/2wce/paystack-shopping/commit/e3de1a42ebf6bd1c6b10c5b8ff8cb4e4493db540))
+
 # [1.5.0](https://github.com/2wce/paystack-shopping/compare/v1.4.0...v1.5.0) (2021-09-21)
 
 
