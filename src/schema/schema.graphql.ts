@@ -10,12 +10,19 @@ export default gql`
     name: String
   }
 
+  input AddToCartInput {
+    cartId: String
+    productId: String!
+    quantity: Int = 1 # default to at least 1 product
+  }
+
   type Cart {
     id: String
     createdAt: Date
     updatedAt: Date
     isCheckedOut: Boolean
     cartItems: [CartItem]
+    total: String # formatted price
   }
 
   type CartItem {
@@ -25,7 +32,7 @@ export default gql`
     cart: Cart
     product: Product
     quantity: Int
-    totalPrice: Float
+    price: String # formatted price
   }
 
   type Category {
@@ -49,5 +56,9 @@ export default gql`
   type Query {
     login(email: String!): String
     products(filterBy: GetProductsInput): [Product]
+  }
+
+  type Mutation {
+    addToCart(input: AddToCartInput!): Cart
   }
 `
