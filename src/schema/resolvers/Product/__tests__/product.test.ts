@@ -25,31 +25,31 @@ describe('Product - get products', () => {
     expect(result).toMatchSnapshot()
   })
 
-  // @TODO: will fix circular dependency issue
-  // it('returns a response of type array', async () => {
-  //   // setup
-  //   const {
-  //     Query: { products },
-  //   } = resolvers
+  it('returns a response of type array', async () => {
+    // setup
+    const {
+      Query: { products },
+    } = resolvers
 
-  //   let args = { filterBy: { skip: 0, take: 10 } }
+    let args = { filterBy: { skip: 0, take: 10 } }
 
-  //   const product = {
-  //     id: '1',
-  //     name: 'my product',
-  //     price: 2300,
-  //     sku: 99888,
-  //     stockLevel: 45,
-  //     expiresAt: new Date(),
-  //     categoryId: 'string',
-  //   }
+    const product = {
+      id: '1',
+      name: 'my product',
+      description: 'my product description',
+      price: 2300,
+      sku: 99888,
+      stockLevel: 45,
+      expiresAt: new Date(),
+      categoryId: 'string',
+    }
 
-  //   mockCtx.prisma.product.findMany.mockResolvedValue([product])
+    mockCtx.prisma.product.findMany.mockResolvedValue([product])
 
-  //   // test
-  //   const result = await products({}, args, context)
+    // test
+    const result = await products({}, args, context)
 
-  //   // assert
-  //   expect(Array.isArray(result)).toBe(true)
-  // })
+    // assert
+    expect(Array.isArray(result)).toBe(true)
+  })
 })

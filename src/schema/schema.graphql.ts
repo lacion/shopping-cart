@@ -11,9 +11,9 @@ export default gql`
   }
 
   input AddToCartInput {
-    cartId: String
+    cartId: String!
     productId: String!
-    quantity: Int = 1 # default to at least 1 product
+    quantity: Int! # default to at least 1 product
   }
 
   input RemoveFromCartInput {
@@ -23,7 +23,7 @@ export default gql`
 
   input UpdateQuantityInput {
     cartItemId: String!
-    quantity: Int
+    quantity: Int!
   }
 
   type Cart {
@@ -65,7 +65,7 @@ export default gql`
 
   type Query {
     login(email: String!): String
-    products(filterBy: GetProductsInput): [Product]
+    products(filterBy: GetProductsInput!): [Product]
   }
 
   type Mutation {

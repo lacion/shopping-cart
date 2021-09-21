@@ -34,7 +34,7 @@ export default {
         }
 
         // check if user already has unchecked out cart
-        let cart: Cart
+        let cart: Cart | null
 
         if (cartId) {
           cart = await prisma.cart.findFirst({
@@ -102,7 +102,7 @@ export default {
 
         // no specific item id or cart id passed.
         if (!cartItemId || !cartId) {
-          throw new ApolloError('Product not found')
+          throw new ApolloError('Invalid input')
         }
 
         // check if cart is valid

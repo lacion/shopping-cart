@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cart - Remove from Cart returns an error if cart id not found 1`] = `[Error: Cart not found]`;
+
+exports[`Cart - Remove from Cart returns an error if cart item id not found 1`] = `[Error: Cart Item not found]`;
+
+exports[`Cart - Remove from Cart returns an error if invalid input is parsed 1`] = `[Error: Invalid input]`;

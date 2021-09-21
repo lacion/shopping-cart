@@ -79,7 +79,7 @@ export default {
           where: { id: _parent.id },
         })
 
-        return formatPrice(cartItem.price)
+        return formatPrice(cartItem ? cartItem.price : 0)
       } catch (error) {
         formatError('Cart.total', error)
         return error

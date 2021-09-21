@@ -12,11 +12,17 @@ export default {
     ) => {
       try {
         const { categoryId, name, skip, take } = filterBy
+        const formattedSkip = skip ? skip : 0
+        const formattedTake = take ? take : 10
+
         let and: Prisma.Enumerable<Prisma.ProductWhereInput> = []
 
         // no specific filter passed.
         if (!categoryId && !name) {
-          return prisma.product.findMany({ skip, take })
+          return prisma.product.findMany({
+            skip: formattedSkip,
+            take: formattedTake,
+          })
         }
 
         // filter by category
@@ -39,8 +45,8 @@ export default {
         }
 
         return prisma.product.findMany({
-          skip,
-          take,
+          skip: formattedSkip,
+          take: formattedTake,
           where: {
             AND: and,
           },
