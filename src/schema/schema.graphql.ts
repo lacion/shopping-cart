@@ -72,5 +72,6 @@ export default gql`
     addToCart(input: AddToCartInput!): Cart
     removeFromCart(input: RemoveFromCartInput!): Cart
     updateQuantity(input: UpdateQuantityInput!): CartItem
+    checkout(cartId: String!): Cart
   }
 `
