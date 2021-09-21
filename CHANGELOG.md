@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/2wce/paystack-shopping/compare/v1.2.0...v1.3.0) (2021-09-21)
+
+
+### Bug Fixes
+
+* change typescript version to avoid circular error ([851813e](https://github.com/2wce/paystack-shopping/commit/851813e83f8ed3fb6e7dc51b259113dcd001cbbd))
+
+
+### Features
+
+* add get products query with filters ([54dd667](https://github.com/2wce/paystack-shopping/commit/54dd66773d2a08e7a9997ff2e9f5bc8adeaf7590))
+
 # [1.2.0](https://github.com/2wce/paystack-shopping/compare/v1.1.0...v1.2.0) (2021-09-21)
 
 
