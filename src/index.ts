@@ -1,18 +1,13 @@
-import { ApolloServer, gql } from 'apollo-server'
+import { ApolloServer } from 'apollo-server'
+import { schema } from './schema'
+import { createContext } from './utils'
 
-const typeDefs = gql`
-  type Query {
-    test: String
-  }
-`
-
-const resolvers = {
-  Query: {
-    test: () => 'Hello',
-  },
-}
-
-const server = new ApolloServer({ typeDefs, resolvers })
+const server = new ApolloServer({
+  schema,
+  // only enable introspection for development
+  introspection: process.env.NODE_ENV !== 'production',
+  context: createContext,
+})
 
 // The `listen` method launches a web server.
 server.listen().then(({ url }) => {

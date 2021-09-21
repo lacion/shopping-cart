@@ -45,12 +45,12 @@ model Category {
 
 // Can have many carts, can have many carts per user
 model Customer {
-  id       String     @id @default(uuid())
-  email    String     @unique
-  address  String?
-  name     String?
-  cart     Cart[]
-  cartItem CartItem[]
+  id        String     @id @default(uuid())
+  email     String     @unique
+  address   String?
+  name      String?
+  carts     Cart[]
+  cartItems CartItem[]
 }
 
 // Can belong to many cart items
@@ -58,12 +58,12 @@ model Customer {
 model Product {
   id          String     @id @default(uuid())
   name        String
-  description String
+  description String?
   price       Int // price in cents
   sku         Int
   stockLevel  Int
   expiresAt   DateTime
   category    Category   @relation(fields: [categoryId], references: [id])
   categoryId  String
-  cartItem    CartItem[]
+  cartItems   CartItem[]
 }
