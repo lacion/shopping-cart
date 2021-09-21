@@ -122,7 +122,7 @@ These are the environment variables required to successfully deploy the applicat
 
 Details of the tech stack that has been used.
 
-- [Typescript](https://typescript.com/) - React Framework for production
+- [Typescript](https://typescript.com/) - TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
 - [Prisma](https://www.prisma.io/) - Next-generation ORM
   for Node.js and TypeScript
 
