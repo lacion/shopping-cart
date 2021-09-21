@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Product - get products returns an error if invalid category id is parsed 1`] = `[Error: Category not found]`;
