@@ -16,6 +16,11 @@ export default gql`
     quantity: Int = 1 # default to at least 1 product
   }
 
+  input UpdateQuantityInput {
+    cartItemId: String!
+    quantity: Int
+  }
+
   type Cart {
     id: String
     createdAt: Date
@@ -60,5 +65,6 @@ export default gql`
 
   type Mutation {
     addToCart(input: AddToCartInput!): Cart
+    updateQuantity(input: UpdateQuantityInput!): CartItem
   }
 `
