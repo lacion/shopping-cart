@@ -1,3 +1,13 @@
+# [1.4.0](https://github.com/2wce/paystack-shopping/compare/v1.3.0...v1.4.0) (2021-09-21)
+
+
+### Features
+
+* add format price helper ([5299338](https://github.com/2wce/paystack-shopping/commit/5299338800e0912779e6685d633c698153374f02))
+* add price to cart item ([504821d](https://github.com/2wce/paystack-shopping/commit/504821d5832cb18446c8e4a92b8835e0eeebe564))
+* add to cart mutation ([dc14a41](https://github.com/2wce/paystack-shopping/commit/dc14a4164a47f140a067966a958be0a2f2b77a98))
+* format cart item price ([f47830c](https://github.com/2wce/paystack-shopping/commit/f47830c2131966a58a778053c6bbe4dc6470bb2e))
+
 # [1.3.0](https://github.com/2wce/paystack-shopping/compare/v1.2.0...v1.3.0) (2021-09-21)
 
 
