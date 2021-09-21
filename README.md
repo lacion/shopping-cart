@@ -14,6 +14,12 @@ Before we get started, we're going to need to make sure we have a few things ins
 
 #### Node >= 12
 
+#### Docker
+
+Use the installation guide from here:
+
+https://www.docker.com/products/docker-desktop
+
 ##### MacOS
 
 ```bash
@@ -50,6 +56,12 @@ npm i
 
 Create a `.env` file based on the [.env.example template](.env.example)
 
+If you have a local MySQL database you can use it's details in the `.env` file. If not, you can run the docker container & use it's default values.
+
+```bash
+docker compose up -d
+```
+
 Export the contents of the created `.env` file to the current terminal session.
 
 ```bash
@@ -65,40 +77,6 @@ yarn dev
 The project should now be available at http://localhost:4000
 
 ![graphql playground](https://i.imgur.com/Gy9arjH.png)
-
-## Environments
-
-Below is a detailed list of the current deployed environments, how they can accessed and any other relevant information.
-
-### Development
-
-> This environment is deployed to automatically on every merge to the `develop` branch.
-
-**Access**
-This environment can be accessed using the credentials below.
-
-| Portal | Endpoint | Username | Password |
-| ------ | -------- | -------- | -------- |
-
-### Staging
-
-> This environment is deployed to automatically on every merge to the `master` branch.
-
-**Access**
-This environment can be accessed using the credentials below.
-
-| Portal | Endpoint | Username | Password |
-| ------ | -------- | -------- | -------- |
-
-### Production
-
-> This environment is deployed to manually by promoting a build from the `master` branch.
-
-**Access**
-This environment can be accessed using the credentials below.
-
-| Portal | Endpoint | Username | Password |
-| ------ | -------- | -------- | -------- |
 
 ## Deployment
 
@@ -173,3 +151,4 @@ A running changelog can be found here: [CHANGELOG.md](CHANGELOG.md)
 | Version | Author                                   | Date       |
 | ------- | ---------------------------------------- | ---------- |
 | 0.0.1   | Kudakwashe Mupeni <kudamupeni@gmail.com> | 20/09/2021 |
+| 0.0.2   | Kudakwashe Mupeni <kudamupeni@gmail.com> | 21/09/2021 |
