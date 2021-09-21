@@ -2,6 +2,7 @@ import { Cart } from '@prisma/client'
 import { ApolloError } from 'apollo-server'
 import {
   MutationAddToCartArgs,
+  MutationCheckoutArgs,
   MutationRemoveFromCartArgs,
 } from '../../../generated'
 import { Context, formatError, formatPrice } from '../../../utils'
@@ -157,6 +158,34 @@ export default {
         return isValidCart
       } catch (error) {
         formatError('removeFromCart', error)
+        return error
+      }
+    },
+    checkout: async (
+      _parent: unknown,
+      { cartId }: MutationCheckoutArgs,
+      { prisma }: Context,
+    ) => {
+      try {
+        const cart = await prisma.cart.findFirst({
+          where: { AND: [{ id: cartId }, { isCheckedOut: false }] },
+        })
+
+        if (!cart) {
+          throw new ApolloError('Cart not found')
+        }
+
+        // checkout cart
+        const updatedCart = await prisma.cart.update({
+          where: { id: cart.id },
+          data: {
+            isCheckedOut: true,
+          },
+        })
+
+        return updatedCart
+      } catch (error) {
+        formatError('checkout', error)
         return error
       }
     },
