@@ -69,7 +69,7 @@ it('should add to existing cart if cartId valid and add product to cart', async 
 
   const cartA = cartFactory.build({ id: '1', customerId: '1' })
 
-  // create the customer
+  // create the cart
   await prisma.cart.create({
     data: cartA,
   })
