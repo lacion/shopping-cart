@@ -31,7 +31,7 @@ jobs:
 
       # Run tests
       - name: Test
-        run: npm test:ci
+        run: npm run test:ci
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
