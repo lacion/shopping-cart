@@ -4,6 +4,10 @@
 
 ![Release](https://github.com/2wce/paystack-shopping/actions/workflows/release.yml/badge.svg)
 
+## Current Issue.
+
+- End to end tests won't run on the CI due to unforeseen issues with the database provider I had in mind. As a result, I had to exclude the e2e test when running the tests. This is a temporary solution until I can figure out a better way to run the e2e tests. A possible fix is to use a different database provider but I haven't had the time to do that yet.
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
@@ -89,12 +93,9 @@ Deployments are handled by github actions, below is an overview of how the deplo
 
 These are the environment variables required to successfully deploy the application.
 
-| key                 | description      |
-| ------------------- | ---------------- |
-| MYSQL_USER          | DB username      |
-| MYSQL_PASSWORD      | DB password      |
-| MYSQL_ROOT_PASSWORD | DB root password |
-| MYSQL_DATABASE      | DB name          |
+| key          | description |
+| ------------ | ----------- |
+| DATABASE_URL | DB url      |
 
 ## Built With
 
@@ -103,22 +104,6 @@ Details of the tech stack that has been used.
 - [Typescript](https://typescript.com/) - TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.
 - [Prisma](https://www.prisma.io/) - Next-generation ORM
   for Node.js and TypeScript
-
-## Infrastructure
-
-A list of infrastructure requirements
-
-- PlanetScale (DB)
-- Vercel (Serverless Function)
-
-## Services
-
-A list of all services used in this project.
-
-| Service Name | Owner/Admin | Service Details |
-| ------------ | ----------- | --------------- |
-| Planet Scale | Kuda        |                 |
-| Vercel       | Kuda        |                 |
 
 ## Versioning
 
@@ -152,3 +137,4 @@ A running changelog can be found here: [CHANGELOG.md](CHANGELOG.md)
 | ------- | ---------------------------------------- | ---------- |
 | 0.0.1   | Kudakwashe Mupeni <kudamupeni@gmail.com> | 20/09/2021 |
 | 0.0.2   | Kudakwashe Mupeni <kudamupeni@gmail.com> | 21/09/2021 |
+| 0.0.3   | Kudakwashe Mupeni <kudamupeni@gmail.com> | 24/09/2021 |
