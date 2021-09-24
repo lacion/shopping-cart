@@ -1,3 +1,11 @@
+# [1.8.0](https://github.com/2wce/shopping-cart/compare/v1.7.0...v1.8.0) (2021-09-24)
+
+
+### Features
+
+* setup add to cart e2e test ([a2dbe9d](https://github.com/2wce/shopping-cart/commit/a2dbe9d73a5a1964f24c57762a48edde59c732e9))
+* update id & migration ([d6318b0](https://github.com/2wce/shopping-cart/commit/d6318b0f8641d8f7cac816c212645ed728078837))
+
 # [1.7.0](https://github.com/2wce/paystack-shopping/compare/v1.6.0...v1.7.0) (2021-09-21)
 
 
