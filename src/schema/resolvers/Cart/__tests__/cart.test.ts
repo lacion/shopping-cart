@@ -16,7 +16,7 @@ describe('Cart - Remove from Cart', () => {
       Mutation: { removeFromCart },
     } = resolvers
 
-    let args = { input: { cartId: '', cartItemId: '' } }
+    let args = { input: { cartId: 0, cartItemId: 0 } }
 
     // test
     const result = await removeFromCart({}, args, context)
@@ -31,7 +31,7 @@ describe('Cart - Remove from Cart', () => {
       Mutation: { removeFromCart },
     } = resolvers
 
-    let args = { input: { cartId: 'doesNotExist', cartItemId: 'undefined' } }
+    let args = { input: { cartId: 7, cartItemId: 7 } }
 
     // test
     const result = await removeFromCart({}, args, context)
@@ -47,15 +47,15 @@ describe('Cart - Remove from Cart', () => {
     } = resolvers
 
     const cart = {
-      id: 'my-cart-id',
+      id: 3,
       createdAt: new Date(),
       updatedAt: new Date(),
       isCheckedOut: false,
-      customerId: 'my-customer-id',
+      customerId: 1,
     }
 
     mockCtx.prisma.cart.findFirst.mockResolvedValue(cart)
-    let args = { input: { cartId: 'my-cart-id', cartItemId: 'doesNotExist' } }
+    let args = { input: { cartId: 3, cartItemId: 5 } }
 
     // test
     const result = await removeFromCart({}, args, context)
@@ -73,7 +73,7 @@ describe('Cart - Checkout Cart', () => {
     } = resolvers
 
     mockCtx.prisma.cart.findFirst.mockResolvedValue(null)
-    let args = { cartId: 'my-cart-id' }
+    let args = { cartId: 1 }
 
     // test
     const result = await checkout({}, args, context)

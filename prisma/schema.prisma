@@ -2,51 +2,54 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  shadowDatabaseUrl    = env("SHADOW_DATABASE_URL")
+  referentialIntegrity = "prisma"
 }
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
 }
 
 // belongs to 1 customer
 // Can have many cart items
 model Cart {
-  id           String     @id @default(uuid())
+  id           Int        @id @default(autoincrement())
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @default(now())
   isCheckedOut Boolean    @default(false)
   customer     Customer   @relation(fields: [customerId], references: [id])
-  customerId   String
+  customerId   Int
   cartItems    CartItem[]
 }
 
 // belongs to 1 cart, 1 customer & can have 1 product of X qty
 model CartItem {
-  id         String   @id @default(uuid())
+  id         Int      @id @default(autoincrement())
   createdAt  DateTime @default(now())
   updatedAt  DateTime @default(now())
   customer   Customer @relation(fields: [customerId], references: [id])
-  customerId String
+  customerId Int
   cart       Cart     @relation(fields: [cartId], references: [id])
-  cartId     String
+  cartId     Int
   product    Product  @relation(fields: [productId], references: [id])
-  productId  String
+  productId  Int
   quantity   Int
   price      Int // price in cents
 }
 
 // Can have many products
 model Category {
-  id       String    @id @default(uuid())
+  id       Int       @id @default(autoincrement())
   name     String
   products Product[]
 }
 
 // Can have many carts, can have many carts per user
 model Customer {
-  id        String     @id @default(uuid())
+  id        Int        @id @default(autoincrement())
   email     String     @unique
   address   String?
   name      String?
@@ -57,7 +60,7 @@ model Customer {
 // Can belong to many cart items
 // belongs to 1 category
 model Product {
-  id          String     @id @default(uuid())
+  id          Int        @id @default(autoincrement())
   name        String
   description String?
   price       Int // price in cents
@@ -65,6 +68,6 @@ model Product {
   stockLevel  Int
   expiresAt   DateTime
   category    Category   @relation(fields: [categoryId], references: [id])
-  categoryId  String
+  categoryId  Int
   cartItems   CartItem[]
 }

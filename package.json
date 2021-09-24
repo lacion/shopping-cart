@@ -7,7 +7,9 @@
     "migrate": "npx prisma db push",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
-    "test": "yarn docker:up && yarn migrate && jest -i && yarn docker:down"
+    "pretest": "npm run generate",
+    "test:local": "npm run docker:up && npm run migrate && jest -i && npm run docker:down",
+    "test": "jest"
   },
   "prettier": {
     "semi": false,

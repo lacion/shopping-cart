@@ -1,6 +1,7 @@
 import {
   cartFactory,
   categoryFactory,
+  clearData,
   Context,
   customerFactory,
   prisma,
@@ -13,30 +14,30 @@ let context: Context
 beforeAll(async () => {
   context = {
     prisma,
-    userId: '1',
+    userId: 1,
   }
 
-  const categoryA = categoryFactory.build({ id: '1' })
-  const categoryB = categoryFactory.build({ id: '2' })
+  await clearData()
+
+  const categoryA = categoryFactory.build({ id: 1 })
+  const categoryB = categoryFactory.build({ id: 2 })
 
   // create product categories
   await prisma.category.createMany({
     data: [categoryA, categoryB],
   })
 
-  const productA = productFactory.build({ id: '1', categoryId: '1' })
-  const productB = productFactory.build({ id: '2', categoryId: '2' })
+  //const products = productFactory.buildList(2)
+  const productA = productFactory.build({ id: 1 })
+  const productB = productFactory.build({ id: 2 })
 
   // create products
   await prisma.product.createMany({
     data: [productA, productB],
   })
 
-  const customerA = customerFactory.build({ id: '1' })
-  const customerB = customerFactory.build({
-    id: '2',
-    email: 'random@user.mail',
-  })
+  const customerA = customerFactory.build({ id: 1 })
+  const customerB = customerFactory.build({ id: 2 })
 
   // create the customer
   await prisma.customer.createMany({
@@ -45,19 +46,7 @@ beforeAll(async () => {
 })
 
 afterAll(async () => {
-  const deleteCartItems = prisma.cartItem.deleteMany()
-  const deleteProduct = prisma.product.deleteMany()
-  const deleteCategory = prisma.category.deleteMany()
-  const deleteCarts = prisma.cart.deleteMany()
-  const deleteCustomer = prisma.customer.deleteMany()
-
-  await prisma.$transaction([
-    deleteCartItems,
-    deleteProduct,
-    deleteCategory,
-    deleteCarts,
-    deleteCustomer,
-  ])
+  await clearData()
 
   await prisma.$disconnect()
 })
@@ -67,28 +56,23 @@ it('should add to existing cart if cartId valid and add product to cart', async 
     Mutation: { addToCart },
   } = resolvers
 
-  const cartA = cartFactory.build({ id: '1', customerId: '1' })
+  const cartA = cartFactory.build({ id: 1, customerId: 1 })
 
   // create the cart
   await prisma.cart.create({
     data: cartA,
   })
 
-  const productId = '2'
+  const productId = 2
 
-  const args = { input: { productId, quantity: 3, cartId: '1' } }
+  const args = { input: { productId, quantity: 3, cartId: 1 } }
 
   // The productId supplied doesn't exit so the function should return an "Out of stock" message
   const result = await addToCart({}, args, context)
 
   // expect cart object to be returned
-  expect(result).toEqual(
-    expect.objectContaining({
-      id: expect.stringMatching('1'),
-      customerId: '1',
-      isCheckedOut: false,
-    }),
-  )
+  expect(result.customerId).toEqual(1)
+  expect(result.isCheckedOut).toBeFalsy()
 
   const product = await prisma.product.findFirst({ where: { id: productId } })
 
@@ -117,21 +101,16 @@ it('should create cart if no exisiting cartId found and add product to cart', as
     Mutation: { addToCart },
   } = resolvers
 
-  const args = { input: { productId: '1', quantity: 3, cartId: 'undefined' } }
+  const args = { input: { productId: 1, quantity: 3, cartId: 99 } }
 
   // The productId supplied doesn't exit so the function should return an "Out of stock" message
   const result = await addToCart({}, args, context)
 
   // expect cart object to be returned
-  expect(result).toEqual(
-    expect.objectContaining({
-      id: expect.any(String),
-      customerId: '1',
-      isCheckedOut: false,
-    }),
-  )
+  expect(result.customerId).toEqual(1)
+  expect(result.isCheckedOut).toBeFalsy()
 
-  const product = await prisma.product.findFirst({ where: { id: '1' } })
+  const product = await prisma.product.findFirst({ where: { id: 1 } })
 
   if (product && result) {
     // stock level to decrease by 3
@@ -146,7 +125,7 @@ it('should create cart if no exisiting cartId found and add product to cart', as
     expect(cartItem).toHaveProperty('price', product.price * 3)
 
     // expect cart item to be linked to product
-    expect(cartItem).toHaveProperty('productId', '1')
+    expect(cartItem).toHaveProperty('productId', 1)
 
     // expect cart item to have correct quantity
     expect(cartItem).toHaveProperty('quantity', 3)

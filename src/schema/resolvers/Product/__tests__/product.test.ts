@@ -16,7 +16,7 @@ describe('Product - get products', () => {
       Query: { products },
     } = resolvers
 
-    let args = { filterBy: { categoryId: 'thisDoesNotExist' } }
+    let args = { filterBy: { categoryId: 0 } }
 
     // test
     const result = await products({}, args, context)
@@ -34,14 +34,14 @@ describe('Product - get products', () => {
     let args = { filterBy: { skip: 0, take: 10 } }
 
     const product = {
-      id: '1',
+      id: 1,
       name: 'my product',
       description: 'my product description',
       price: 2300,
       sku: 99888,
       stockLevel: 45,
       expiresAt: new Date(),
-      categoryId: 'string',
+      categoryId: 1,
     }
 
     mockCtx.prisma.product.findMany.mockResolvedValue([product])

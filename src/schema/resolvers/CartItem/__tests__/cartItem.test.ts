@@ -16,7 +16,7 @@ describe('CartItem - update quantity', () => {
       Mutation: { updateQuantity },
     } = resolvers
 
-    let args = { input: { quantity: 0, cartItemId: '' } }
+    let args = { input: { quantity: 0, cartItemId: 0 } }
 
     // test
     const result = await updateQuantity({}, args, context)
@@ -31,7 +31,7 @@ describe('CartItem - update quantity', () => {
       Mutation: { updateQuantity },
     } = resolvers
 
-    let args = { input: { quantity: 3, cartItemId: 'undefined' } }
+    let args = { input: { quantity: 3, cartItemId: 5 } }
 
     // test
     const result = await updateQuantity({}, args, context)
@@ -48,7 +48,7 @@ describe('CartItem - update quantity', () => {
 
     mockCtx.prisma.product.findFirst.mockResolvedValue(null)
 
-    let args = { input: { quantity: 30, cartItemId: 'my-cart-item-id' } }
+    let args = { input: { quantity: 30, cartItemId: 1 } }
 
     // test
     const result = await updateQuantity({}, args, context)
