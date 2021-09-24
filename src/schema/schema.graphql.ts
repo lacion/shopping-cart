@@ -4,30 +4,30 @@ export default gql`
   scalar Date
 
   input GetProductsInput {
-    categoryId: String
+    categoryId: Int
     skip: Int = 0 # default to 1st page
     take: Int = 10 # default to 10 products
     name: String
   }
 
   input AddToCartInput {
-    cartId: String!
-    productId: String!
+    cartId: Int!
+    productId: Int!
     quantity: Int! # default to at least 1 product
   }
 
   input RemoveFromCartInput {
-    cartItemId: String!
-    cartId: String!
+    cartItemId: Int!
+    cartId: Int!
   }
 
   input UpdateQuantityInput {
-    cartItemId: String!
+    cartItemId: Int!
     quantity: Int!
   }
 
   type Cart {
-    id: String
+    id: Int
     createdAt: Date
     updatedAt: Date
     isCheckedOut: Boolean
@@ -36,7 +36,7 @@ export default gql`
   }
 
   type CartItem {
-    id: String
+    id: Int
     createdAt: Date
     updatedAt: Date
     cart: Cart
@@ -46,13 +46,13 @@ export default gql`
   }
 
   type Category {
-    id: String
+    id: Int
     name: String
     products: [Product]
   }
 
   type Product {
-    id: String
+    id: Int
     name: String
     description: String
     price: Int
@@ -72,6 +72,6 @@ export default gql`
     addToCart(input: AddToCartInput!): Cart
     removeFromCart(input: RemoveFromCartInput!): Cart
     updateQuantity(input: UpdateQuantityInput!): CartItem
-    checkout(cartId: String!): Cart
+    checkout(cartId: Int!): Cart
   }
 `

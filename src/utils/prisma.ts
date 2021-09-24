@@ -15,7 +15,7 @@ interface ContextEvent {
 export interface Context {
   prisma: PrismaClient
   event?: ContextEvent
-  userId?: string
+  userId?: number
 }
 
 export type MockContext = {
@@ -35,5 +35,25 @@ export function createContext(request: any) {
     ...request,
     userId,
     prisma,
+  }
+}
+
+export const clearData = async () => {
+  try {
+    const deleteCartItems = prisma.cartItem.deleteMany()
+    const deleteProduct = prisma.product.deleteMany()
+    const deleteCategory = prisma.category.deleteMany()
+    const deleteCarts = prisma.cart.deleteMany()
+    const deleteCustomer = prisma.customer.deleteMany()
+
+    await prisma.$transaction([
+      deleteCartItems,
+      deleteProduct,
+      deleteCategory,
+      deleteCarts,
+      deleteCustomer,
+    ])
+  } catch (error) {
+    console.error(error)
   }
 }
