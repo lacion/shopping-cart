@@ -16,7 +16,7 @@ interface ContextEvent {
 }
 
 export interface Context {
-  req: ContextEvent
+  req?: ContextEvent
   prisma: PrismaClient
   userId?: number
 }

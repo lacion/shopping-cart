@@ -88,6 +88,14 @@ Start the db viewer in another terminal to view your database
 npx prisma studio
 ```
 
+## Testing
+
+You can run local tests using
+
+```bash
+yarn test:local
+```
+
 ## Example Flow
 
 You can find the example flow & queries in here: [ExampleFlow.md](ExampleFlow.md)
