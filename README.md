@@ -52,12 +52,6 @@ Enter the cloned repositories' directory
 cd paystack-shopping
 ```
 
-Install the projects dependencies
-
-```bash
-npm i
-```
-
 Create a `.env` file based on the [.env.example template](.env.example)
 
 If you have a local MySQL database you can use it's details in the `.env` file. If not, you can run the docker container & use it's default values.
@@ -72,6 +66,12 @@ Export the contents of the created `.env` file to the current terminal session.
 set -o allexport; source .env; set +o allexport
 ```
 
+Install the projects dependencies
+
+```bash
+npm i
+```
+
 Start the projects development server
 
 ```bash
@@ -81,6 +81,24 @@ yarn dev
 The project should now be available at http://localhost:4000
 
 ![graphql playground](https://i.imgur.com/Gy9arjH.png)
+
+Start the db viewer in another terminal to view your database
+
+```bash
+npx prisma studio
+```
+
+## Testing
+
+You can run local tests using
+
+```bash
+yarn test:local
+```
+
+## Example Flow
+
+You can find the example flow & queries in here: [ExampleFlow.md](ExampleFlow.md)
 
 ## Deployment
 

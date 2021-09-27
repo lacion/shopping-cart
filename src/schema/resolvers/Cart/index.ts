@@ -4,10 +4,33 @@ import {
   MutationAddToCartArgs,
   MutationCheckoutArgs,
   MutationRemoveFromCartArgs,
+  QueryCartArgs,
 } from '../../../generated'
 import { Context, formatError, formatPrice } from '../../../utils'
 
 export default {
+  Query: {
+    cart: async (
+      _parent: unknown,
+      { id }: QueryCartArgs,
+      { prisma }: Context,
+    ) => {
+      try {
+        if (!id) {
+          throw new ApolloError('Cart ID is required')
+        }
+
+        return prisma.cart.findUnique({
+          where: {
+            id,
+          },
+        })
+      } catch (error) {
+        formatError('products', error)
+        return error
+      }
+    },
+  },
   Mutation: {
     addToCart: async (
       _parent: unknown,
@@ -37,6 +60,7 @@ export default {
         // check if user already has unchecked out cart
         let cart: Cart | null
 
+        // if cartId is passed, use that
         if (cartId) {
           cart = await prisma.cart.findFirst({
             where: {
@@ -53,15 +77,63 @@ export default {
             })
           }
         } else {
-          // create new cart
-          cart = await prisma.cart.create({
-            data: {
-              customer: { connect: { id: userId } },
+          // check if user has a cart
+          const userCart = await prisma.cart.findFirst({
+            where: {
+              isCheckedOut: false,
             },
           })
+
+          if (userCart) {
+            cart = userCart
+          } else {
+            // create new cart
+            cart = await prisma.cart.create({
+              data: {
+                customer: { connect: { id: userId } },
+              },
+            })
+          }
         }
 
         const priceInCents = hasEnoughProducts.price * safeQuantity
+
+        // if this product is already in cart, update cart item quantity & price
+        const cartItem = await prisma.cartItem.findFirst({
+          where: {
+            AND: [{ cart: { id: cart.id } }, { product: { id: productId } }],
+          },
+        })
+
+        if (cartItem) {
+          // add product to cart
+          const updatedCartItem = prisma.cartItem.update({
+            where: { id: cartItem.id },
+            data: {
+              quantity: {
+                increment: safeQuantity,
+              },
+              price: {
+                increment: priceInCents,
+              },
+            },
+          })
+
+          // update product stock level
+          const newStockLevel = prisma.product.update({
+            where: { id: productId },
+            data: {
+              stockLevel: {
+                decrement: safeQuantity,
+              },
+            },
+          })
+
+          // wrap operations in transaction to ensure both mutations succeed
+          await prisma.$transaction([updatedCartItem, newStockLevel])
+
+          return cart
+        }
 
         // add product to cart
         const newCartItem = prisma.cartItem.create({
@@ -129,11 +201,6 @@ export default {
 
         const quantity = isValidCartItem.quantity
 
-        // delete cart item
-        const deletedCartItem = prisma.cartItem.delete({
-          where: { id: cartItemId },
-        })
-
         // update product stock level
         const newStockLevel = prisma.product.update({
           where: { id: isValidCartItem.product.id },
@@ -153,8 +220,14 @@ export default {
         })
 
         // wrap operations in transaction to ensure both mutations succeed
-        await prisma.$transaction([deletedCartItem, newStockLevel, updatedCart])
+        const result = await prisma.$transaction([newStockLevel, updatedCart])
 
+        // if both mutations succeed, delete cart item
+        if (result.every((item) => item.id)) {
+          await prisma.cartItem.delete({
+            where: { id: cartItemId },
+          })
+        }
         return isValidCart
       } catch (error) {
         formatError('removeFromCart', error)
@@ -191,6 +264,22 @@ export default {
     },
   },
   Cart: {
+    // format price into rands so we don't have to worry about that on the frontend
+    cartItems: async (_parent: Cart, args: unknown, { prisma }: Context) => {
+      try {
+        // get  cart items in cart
+        const cartItems = await prisma.cart
+          .findUnique({
+            where: { id: _parent.id },
+          })
+          .cartItems()
+
+        return cartItems
+      } catch (error) {
+        formatError('Cart.cartItems', error)
+        return error
+      }
+    },
     // calculate price based db so we don't have to worry about outdated data
     total: async (_parent: Cart, args: unknown, { prisma }: Context) => {
       try {

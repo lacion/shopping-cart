@@ -3,13 +3,15 @@
   "scripts": {
     "dev": "ts-node-dev --no-notify --respawn --transpile-only src/index",
     "generate": "graphql-codegen",
-    "postinstall": "npm run generate",
+    "reset": "npx prisma migrate reset -f",
+    "predev": "npm run generate && npm run reset",
     "migrate": "npx prisma db push",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
     "pretest": "npm run generate",
-    "test:local": "npm run docker:up && npm run migrate && jest -i && npm run docker:down",
-    "test": "jest"
+    "seed": "ts-node prisma/seed.ts",
+    "test:local": "npm run docker:up && npm run reset && jest -i --config jest.local.config.js && npm run docker:down",
+    "test": "jest --config jest.ci.config.js"
   },
   "prettier": {
     "semi": false,
@@ -19,7 +21,7 @@
   "dependencies": {
     "@graphql-tools/schema": "^8.2.0",
     "@prisma/client": "3.1.1",
-    "apollo-server": "3.3.0",
+    "apollo-server": "2.25.2",
     "bcryptjs": "2.4.3",
     "factory.ts": "^0.5.2",
     "faker": "^5.5.3",

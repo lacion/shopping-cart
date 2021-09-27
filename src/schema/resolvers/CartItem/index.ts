@@ -45,8 +45,12 @@ export default {
         const newCartItem = prisma.cartItem.update({
           where: { id: cartItemId },
           data: {
-            quantity,
-            price,
+            quantity: {
+              increment: quantity,
+            },
+            price: {
+              increment: price,
+            },
           },
         })
 
@@ -63,7 +67,7 @@ export default {
         // wrap operations in transaction to ensure both mutations succeed
         await prisma.$transaction([newCartItem, newStockLevel])
 
-        return newCartItem
+        return prisma.cartItem.findUnique({ where: { id: cartItemId } })
       } catch (error) {
         formatError('updateQuantity', error)
         return error
@@ -71,6 +75,22 @@ export default {
     },
   },
   CartItem: {
+    // product linked to CartItem
+    product: async (_parent: CartItem, args: unknown, { prisma }: Context) => {
+      try {
+        // get product related to cart item
+        const product = await prisma.cartItem
+          .findUnique({
+            where: { id: _parent.id },
+          })
+          .product()
+
+        return product
+      } catch (error) {
+        formatError('CartItem.product', error)
+        return error
+      }
+    },
     // format price into rands so we don't have to worry about that on the frontend
     price: async (_parent: CartItem, args: unknown, { prisma }: Context) => {
       try {
@@ -81,7 +101,7 @@ export default {
 
         return formatPrice(cartItem ? cartItem.price : 0)
       } catch (error) {
-        formatError('Cart.total', error)
+        formatError('CartItem.price', error)
         return error
       }
     },
