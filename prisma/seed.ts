@@ -4,22 +4,11 @@ import { categoryFactory, customerFactory, productFactory } from './data'
 const prisma = new PrismaClient()
 
 async function main() {
-  const categoryA = categoryFactory.build({ id: 1 })
-  const categoryB = categoryFactory.build({ id: 2 })
-
   // create product categories
-  const categories = prisma.category.createMany({
-    data: [categoryA, categoryB],
-  })
+  const categories = categoryFactory.buildList(2)
 
   //create products dummy data
-  const productA = productFactory.build({ id: 1 })
-  const productB = productFactory.build({ id: 2 })
-
-  // create products
-  const products = prisma.product.createMany({
-    data: [productA, productB],
-  })
+  const products = productFactory.buildList(2)
 
   // create customers dummy data
   const customerA = customerFactory.build({ id: 1, email: 'example@user.com' })
@@ -29,7 +18,15 @@ async function main() {
     data: [customerA],
   })
 
-  const res = await prisma.$transaction([categories, products, customers])
+  const res = await prisma.$transaction([
+    prisma.category.createMany({
+      data: categories,
+    }),
+    prisma.product.createMany({
+      data: products,
+    }),
+    customers,
+  ])
 
   console.log('seed data created', { res })
 }
