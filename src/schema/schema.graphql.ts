@@ -11,7 +11,7 @@ export default gql`
   }
 
   input AddToCartInput {
-    cartId: Int!
+    cartId: Int
     productId: Int!
     quantity: Int! # default to at least 1 product
   }
@@ -55,7 +55,7 @@ export default gql`
     id: Int
     name: String
     description: String
-    price: Int
+    price: String
     sku: Int
     stockLevel: Int
     expiresAt: Date
@@ -65,6 +65,7 @@ export default gql`
 
   type Query {
     login(email: String!): String
+    cart(id: Int!): Cart
     products(filterBy: GetProductsInput!): [Product]
   }
 

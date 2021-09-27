@@ -1,7 +1,7 @@
-import { Prisma } from '@prisma/client'
+import { Prisma, Product } from '@prisma/client'
 import { ApolloError } from 'apollo-server'
 import { QueryProductsArgs } from '../../../generated'
-import { Context, formatError } from '../../../utils'
+import { Context, formatError, formatPrice } from '../../../utils'
 
 export default {
   Query: {
@@ -53,6 +53,22 @@ export default {
         })
       } catch (error) {
         formatError('products', error)
+        return error
+      }
+    },
+  },
+  Product: {
+    // calculate price based db so we don't have to worry about outdated data
+    price: async (_parent: Product, args: unknown, { prisma }: Context) => {
+      try {
+        // get current product
+        const product = await prisma.product.findUnique({
+          where: { id: _parent.id },
+        })
+
+        return formatPrice(product ? product.price : 0)
+      } catch (error) {
+        formatError('Product.price', error)
         return error
       }
     },
