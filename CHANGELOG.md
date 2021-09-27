@@ -1,3 +1,16 @@
+# [1.9.0](https://github.com/2wce/shopping-cart/compare/v1.8.0...v1.9.0) (2021-09-27)
+
+
+### Bug Fixes
+
+* CI tests ([804bf95](https://github.com/2wce/shopping-cart/commit/804bf95c7cdffa3a2ff305cc53d904e1777db8c7))
+* fixes from testing ([b89de1f](https://github.com/2wce/shopping-cart/commit/b89de1fabbbaf79be3b0b1bc63f584cf5c134949))
+
+
+### Features
+
+* update cart item model ([70e47fc](https://github.com/2wce/shopping-cart/commit/70e47fc0952f4313da2a975090b436688b717484))
+
 # [1.8.0](https://github.com/2wce/shopping-cart/compare/v1.7.0...v1.8.0) (2021-09-24)
 
 
