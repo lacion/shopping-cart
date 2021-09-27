@@ -4,7 +4,7 @@
     "dev": "ts-node-dev --no-notify --respawn --transpile-only src/index",
     "generate": "graphql-codegen",
     "reset": "npx prisma migrate reset -f",
-    "postinstall": "npm run generate && npx prisma migrate dev && npm run seed",
+    "prepare": "npm run generate && npx prisma migrate dev && npm run seed",
     "migrate": "npx prisma db push",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
