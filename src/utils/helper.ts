@@ -6,7 +6,7 @@ export const formatError = (nameOfFunction: string, error: Error) => {
 
 export const formatPrice = (price: number) => {
   if (!price) {
-    return 'R ' + (0).toFixed(2)
+    return 'R' + (0).toFixed(2)
   }
 
   return new Intl.NumberFormat('en-ZA', {
@@ -14,6 +14,6 @@ export const formatPrice = (price: number) => {
     currency: 'ZAR',
     minimumFractionDigits: 2,
   })
-    .format(price)
+    .format(price / 100)
     .replace(',', '.')
 }
