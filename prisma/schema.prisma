@@ -31,8 +31,8 @@ model CartItem {
   updatedAt  DateTime @default(now())
   customer   Customer @relation(fields: [customerId], references: [id])
   customerId Int
-  cart       Cart     @relation(fields: [cartId], references: [id])
-  cartId     Int
+  cart       Cart?    @relation(fields: [cartId], references: [id])
+  cartId     Int?
   product    Product  @relation(fields: [productId], references: [id])
   productId  Int
   quantity   Int
