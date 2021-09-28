@@ -8,12 +8,24 @@ on:
 
 jobs:
   test:
+    env:
+      DATABASE_URL: mysql://root:prisma@localhost:3306/shopping-test
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         # Run the steps below with the following versions of Node.js
         node-version: [14.x]
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_USER: prisma
+          MYSQL_PASSWORD: prisma
+          MYSQL_ROOT_PASSWORD: prisma
+          MYSQL_DATABASE: shopping-test
+        ports:
+          - 3306:3306
     steps:
       # Fetch the latest commit
       - name: Checkout
@@ -32,8 +44,6 @@ jobs:
       # Run tests
       - name: Test
         run: npm test
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
   release:
     # Only release on push to main
