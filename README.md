@@ -4,10 +4,6 @@
 
 ![Release](https://github.com/2wce/paystack-shopping/actions/workflows/release.yml/badge.svg)
 
-## Current Issue.
-
-- End to end tests won't run on the CI due to unforeseen issues with the database provider I had in mind. As a result, I had to exclude the e2e test when running the tests. This is a temporary solution until I can figure out a better way to run the e2e tests. A possible fix is to use a different database provider but I haven't had the time to do that yet.
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
