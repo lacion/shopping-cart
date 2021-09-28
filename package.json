@@ -11,7 +11,7 @@
     "pretest": "npm run generate",
     "seed": "ts-node prisma/seed.ts",
     "test:local": "npm run docker:up && npm run reset && jest -i --config jest.local.config.js && npm run docker:down",
-    "test": "jest --config jest.ci.config.js"
+    "test": "npm run reset && jest --config jest.local.config.js"
   },
   "prettier": {
     "semi": false,
