@@ -7,7 +7,7 @@ interface Token {
 }
 
 // get user id from auth token
-export function getUserId({ req }: Context) {
+export function getUserId({ req }: Context): string  {
   if (req) {
     const Authorization = req.headers.authorization || req.headers.Authorization
 
