@@ -39,24 +39,30 @@ model CartItem {
 
 // Can have many products
 model Category {
-  id       Int       @id @default(autoincrement())
-  name     String
-  products Product[]
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now())
+  name      String
+  products  Product[]
 }
 
 // Can have many carts, can have many carts per user
 model Customer {
-  id      Int     @id @default(autoincrement())
-  email   String  @unique
-  address String?
-  name    String?
-  carts   Cart[]
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  email     String   @unique
+  address   String?
+  name      String?
+  carts     Cart[]
 }
 
 // Can belong to many cart items
 // belongs to 1 category
 model Product {
   id          Int        @id @default(autoincrement())
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @default(now())
   name        String
   description String?
   price       Int // price in cents
