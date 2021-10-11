@@ -140,7 +140,6 @@ export default {
           data: {
             quantity: safeQuantity,
             cart: { connect: { id: cart.id } },
-            customer: { connect: { id: userId } },
             product: { connect: { id: productId } },
             price: priceInCents,
           },
