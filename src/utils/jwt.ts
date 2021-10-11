@@ -1,28 +1,29 @@
-import { sign, verify } from 'jsonwebtoken'
-import { clone } from 'lodash'
-import { Context } from './prisma'
+import { sign, verify } from "jsonwebtoken";
+import { clone } from "lodash";
+import { Context } from "./prisma";
 
 interface Token {
-  id: string
+  id: string;
 }
 
 // get user id from auth token
-export function getUserId({ req }: Context) {
+export function getUserId({ req }: Context): string | undefined {
   if (req) {
-    const Authorization = req.headers.authorization || req.headers.Authorization
+    const Authorization =
+      req.headers.authorization || req.headers.Authorization;
 
     if (Authorization) {
-      const token = Authorization.replace('Bearer ', '')
+      const token = Authorization.replace("Bearer ", "");
 
       const verifiedToken = verify(
         token,
-        process.env.JWT_SECRET as string,
-      ) as Token
+        process.env.JWT_SECRET as string
+      ) as Token;
 
-      return verifiedToken && verifiedToken.id
+      return verifiedToken && verifiedToken.id;
     }
   }
-  return undefined
+  return undefined;
 }
 
 // issue new token based on payload
@@ -30,6 +31,6 @@ export const issue = (payload: any, jwtOptions = {}) => {
   return sign(
     clone(payload.toJSON ? payload.toJSON() : payload),
     process.env.JWT_SECRET as string,
-    { ...jwtOptions, expiresIn: '1d' },
-  )
-}
+    { ...jwtOptions, expiresIn: "1d" }
+  );
+};
