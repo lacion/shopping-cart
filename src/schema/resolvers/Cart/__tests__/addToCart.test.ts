@@ -53,7 +53,7 @@ describe('Add To Cart', () => {
       Mutation: { addToCart },
     } = resolvers
 
-    const cartA = cartFactory.build({ id: 1, customerId: 1 })
+    const cartA = cartFactory.build({ id: 10, customerId: 1 })
 
     // create the cart
     await prisma.cart.create({
