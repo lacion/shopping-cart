@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/2wce/shopping-cart/compare/v1.12.0...v1.13.0) (2021-10-11)
+
+
+### Features
+
+* checkout test ([206dd56](https://github.com/2wce/shopping-cart/commit/206dd560ed6d530ba9786e7b67b35cfea105539f))
+
 # [1.12.0](https://github.com/2wce/shopping-cart/compare/v1.11.0...v1.12.0) (2021-10-11)
 
 
