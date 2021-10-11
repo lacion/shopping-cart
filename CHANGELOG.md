@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/2wce/shopping-cart/compare/v1.11.0...v1.12.0) (2021-10-11)
+
+
+### Features
+
+* add missing timestamps to db ([28ccece](https://github.com/2wce/shopping-cart/commit/28ccecec3251ddbaadd920262a1a264da4fc736f))
+
 # [1.11.0](https://github.com/2wce/shopping-cart/compare/v1.10.0...v1.11.0) (2021-10-11)
 
 
