@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/2wce/shopping-cart/compare/v1.9.0...v1.10.0) (2021-10-11)
+
+
+### Features
+
+* update return type for jwt utils ([68f4014](https://github.com/2wce/shopping-cart/commit/68f4014311b66ea6f72bc4c1156fc1eaee4e3bbc))
+
 # [1.9.0](https://github.com/2wce/shopping-cart/compare/v1.8.0...v1.9.0) (2021-09-27)
 
 
