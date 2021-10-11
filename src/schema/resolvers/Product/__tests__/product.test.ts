@@ -35,6 +35,8 @@ describe('Product - get products', () => {
 
     const product = {
       id: 1,
+      createdAt: new Date(),
+      updatedAt: new Date(),
       name: 'my product',
       description: 'my product description',
       price: 2300,
