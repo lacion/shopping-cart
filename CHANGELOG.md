@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/2wce/shopping-cart/compare/v1.10.0...v1.11.0) (2021-10-11)
+
+
+### Features
+
+* update carrt error label ([57258a6](https://github.com/2wce/shopping-cart/commit/57258a6415ae9892b05233cb16ea0737b9f491ba))
+
 # [1.10.0](https://github.com/2wce/shopping-cart/compare/v1.9.0...v1.10.0) (2021-10-11)
 
 
