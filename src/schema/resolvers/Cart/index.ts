@@ -26,7 +26,7 @@ export default {
           },
         })
       } catch (error) {
-        formatError('products', error)
+        formatError('cart', error)
         return error
       }
     },
