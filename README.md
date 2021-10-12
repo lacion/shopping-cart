@@ -76,7 +76,7 @@ yarn dev
 
 The project should now be available at http://localhost:4000
 
-![graphql playground](https://i.imgur.com/Gy9arjH.png)
+![graphql playground](https://i.imgur.com/h1xqghS.png)
 
 Start the db viewer in another terminal to view your database
 
