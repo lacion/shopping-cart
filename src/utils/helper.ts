@@ -4,7 +4,7 @@ export const formatError = (nameOfFunction: string, error: Error) => {
     : console.log(`----${nameOfFunction}----`, error)
 }
 
-export const formatPrice = (price: number): string  => {
+export const formatPrice = (price: number): string => {
   if (!price) {
     return 'R' + (0).toFixed(2)
   }
