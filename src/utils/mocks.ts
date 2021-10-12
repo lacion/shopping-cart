@@ -29,7 +29,7 @@ export const cartFactory = Factory.Sync.makeFactory<Prisma.CartCreateManyInput>(
 
 export const customerFactory =
   Factory.Sync.makeFactory<Prisma.CustomerCreateManyInput>({
-    email: Factory.Sync.each(() => internet.exampleEmail()),
+    email: Factory.Sync.each((seq) => `${seq}_${internet.email()}`),
     name: name.findName(),
     address: address.streetAddress(),
   })
