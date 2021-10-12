@@ -1,7 +1,7 @@
 import { CartItem } from '@prisma/client'
 import { ApolloError } from 'apollo-server'
-import { MutationUpdateQuantityArgs } from '../../../generated'
-import { Context, formatError, formatPrice } from '../../../utils'
+import { MutationUpdateQuantityArgs } from 'src/generated'
+import { Context, formatError, formatPrice } from 'src/utils'
 
 export default {
   Mutation: {
