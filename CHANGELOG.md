@@ -1,3 +1,10 @@
+# [1.17.0](https://github.com/2wce/shopping-cart/compare/v1.16.0...v1.17.0) (2021-10-12)
+
+
+### Features
+
+* refactor cart follder structure ([7c25cf0](https://github.com/2wce/shopping-cart/commit/7c25cf0817ed75f8c2769a5411754509d517b843))
+
 # [1.16.0](https://github.com/2wce/shopping-cart/compare/v1.15.0...v1.16.0) (2021-10-12)
 
 
