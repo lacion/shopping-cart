@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/2wce/shopping-cart/compare/v1.15.0...v1.16.0) (2021-10-12)
+
+
+### Features
+
+* remove from cart test ([41f03e1](https://github.com/2wce/shopping-cart/commit/41f03e1008d38c82c71e1ca7826dd406bafd5614))
+
 # [1.15.0](https://github.com/2wce/shopping-cart/compare/v1.14.0...v1.15.0) (2021-10-12)
 
 
