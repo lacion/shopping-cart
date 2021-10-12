@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/2wce/shopping-cart/compare/v1.14.0...v1.15.0) (2021-10-12)
+
+
+### Features
+
+* fixes for local flaky test ([ed04792](https://github.com/2wce/shopping-cart/commit/ed047922419f6c52f4d60a969659abd39c5744d7))
+
 # [1.14.0](https://github.com/2wce/shopping-cart/compare/v1.13.0...v1.14.0) (2021-10-12)
 
 
