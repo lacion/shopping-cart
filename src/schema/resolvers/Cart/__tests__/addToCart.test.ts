@@ -47,85 +47,93 @@ afterAll(async () => {
   await prisma.$disconnect()
 })
 
-describe('Add To Cart', () => {
-  it('should add to existing cart if cartId valid and add product to cart', async () => {
-    const {
-      Mutation: { addToCart },
-    } = resolvers
+test('should add to existing cart if cartId valid and add product to cart', async () => {
+  const {
+    Mutation: { addToCart },
+  } = resolvers
 
-    const cartA = cartFactory.build({ id: 10, customerId: 1 })
+  const cartA = cartFactory.build({ id: 10, customerId: 1 })
 
-    // create the cart
-    await prisma.cart.create({
-      data: cartA,
+  // create the cart
+  const cart = await prisma.cart.create({
+    data: cartA,
+  })
+
+  const productId = 2
+
+  const args = { input: { productId, quantity: 3, cartId: cart.id } }
+
+  // The productId supplied doesn't exit so the function should return an "Out of stock" message
+  const result = await addToCart({}, args, context)
+
+  console.log({ result })
+  // expect cart object to be returned
+  expect(result.customerId).toEqual(1)
+  expect(result.isCheckedOut).toBeFalsy()
+
+  const product = await prisma.product.findFirst({ where: { id: productId } })
+
+  if (product && result) {
+    // stock level to decrease by 3
+    expect(product.stockLevel).toEqual(17)
+
+    // expect cart to have cart item
+    const cartItem = await prisma.cartItem.findFirst({
+      where: { cartId: result.id },
     })
 
-    const productId = 2
+    // expect cart item total to be product price * 3
+    expect(cartItem).toHaveProperty('price', product.price * 3)
 
-    const args = { input: { productId, quantity: 3, cartId: 1 } }
+    // expect cart item to be linked to product
+    expect(cartItem).toHaveProperty('productId', productId)
 
-    // The productId supplied doesn't exit so the function should return an "Out of stock" message
-    const result = await addToCart({}, args, context)
+    // expect cart item to have correct quantity
+    expect(cartItem).toHaveProperty('quantity', 3)
+  }
+})
 
-    // expect cart object to be returned
-    expect(result.customerId).toEqual(1)
-    expect(result.isCheckedOut).toBeFalsy()
+test('should create cart if no existing cartId found and add product to cart', async () => {
+  const {
+    Mutation: { addToCart },
+  } = resolvers
 
-    const product = await prisma.product.findFirst({ where: { id: productId } })
+  const args = { input: { productId: 1, quantity: 3 } }
 
-    if (product && result) {
-      // stock level to decrease by 3
-      expect(product.stockLevel).toEqual(17)
+  // The productId supplied doesn't exit so the function should return an "Out of stock" message
+  const result = await addToCart({}, args, context)
 
-      // expect cart to have cart item
-      const cartItem = await prisma.cartItem.findFirst({
-        where: { cartId: result.id },
-      })
+  //console.log({ result })
+  // expect cart object to be returned
+  expect(result.customerId).toEqual(1)
+  expect(result.isCheckedOut).toBeFalsy()
 
-      // expect cart item total to be product price * 3
-      expect(cartItem).toHaveProperty('price', product.price * 3)
+  const product = await prisma.product.findFirst({ where: { id: 1 } })
 
-      // expect cart item to be linked to product
-      expect(cartItem).toHaveProperty('productId', productId)
+  console.log({ product, result })
+  if (product && result) {
+    // stock level to decrease by 3
+    expect(product.stockLevel).toEqual(17)
 
-      // expect cart item to have correct quantity
-      expect(cartItem).toHaveProperty('quantity', 3)
-    }
-  })
+    // expect cart to have cart item
+    const cartItem = await prisma.cartItem.findFirst({
+      where: { cartId: result.id },
+      orderBy: {
+        createdAt: 'desc',
+      },
+    })
 
-  it('should create cart if no existing cartId found and add product to cart', async () => {
-    const {
-      Mutation: { addToCart },
-    } = resolvers
+    const cartItems = await prisma.cartItem.findMany()
 
-    const args = { input: { productId: 1, quantity: 3, cartId: 99 } }
+    console.log({ cartItems, cartItem })
 
-    // The productId supplied doesn't exit so the function should return an "Out of stock" message
-    const result = await addToCart({}, args, context)
+    // expect cart item total to be product price * 3
+    expect(cartItem).toHaveProperty('price', product.price * 3)
 
-    // expect cart object to be returned
-    expect(result.customerId).toEqual(1)
-    expect(result.isCheckedOut).toBeFalsy()
+    // expect cart item to be linked to product
+    expect(cartItem).toHaveProperty('productId')
 
-    const product = await prisma.product.findFirst({ where: { id: 1 } })
-
-    if (product && result) {
-      // stock level to decrease by 3
-      expect(product.stockLevel).toEqual(17)
-
-      // expect cart to have cart item
-      const cartItem = await prisma.cartItem.findFirst({
-        where: { cartId: result.id },
-      })
-
-      // expect cart item total to be product price * 3
-      expect(cartItem).toHaveProperty('price', product.price * 3)
-
-      // expect cart item to be linked to product
-      expect(cartItem).toHaveProperty('productId', 1)
-
-      // expect cart item to have correct quantity
-      expect(cartItem).toHaveProperty('quantity', 3)
-    }
-  })
+    // expect cart item to have correct quantity
+    expect(cartItem).toHaveProperty('quantity', 3)
+  }
 })
