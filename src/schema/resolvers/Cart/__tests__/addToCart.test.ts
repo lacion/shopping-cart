@@ -66,7 +66,6 @@ test('should add to existing cart if cartId valid and add product to cart', asyn
   // The productId supplied doesn't exit so the function should return an "Out of stock" message
   const result = await addToCart({}, args, context)
 
-  console.log({ result })
   // expect cart object to be returned
   expect(result.customerId).toEqual(1)
   expect(result.isCheckedOut).toBeFalsy()
@@ -103,14 +102,12 @@ test('should create cart if no existing cartId found and add product to cart', a
   // The productId supplied doesn't exit so the function should return an "Out of stock" message
   const result = await addToCart({}, args, context)
 
-  //console.log({ result })
   // expect cart object to be returned
   expect(result.customerId).toEqual(1)
   expect(result.isCheckedOut).toBeFalsy()
 
   const product = await prisma.product.findFirst({ where: { id: 1 } })
 
-  console.log({ product, result })
   if (product && result) {
     // stock level to decrease by 3
     expect(product.stockLevel).toEqual(17)
@@ -122,10 +119,6 @@ test('should create cart if no existing cartId found and add product to cart', a
         createdAt: 'desc',
       },
     })
-
-    const cartItems = await prisma.cartItem.findMany()
-
-    console.log({ cartItems, cartItem })
 
     // expect cart item total to be product price * 3
     expect(cartItem).toHaveProperty('price', product.price * 3)

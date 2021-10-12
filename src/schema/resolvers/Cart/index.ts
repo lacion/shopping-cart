@@ -52,7 +52,6 @@ export default {
           },
         })
 
-        console.log({ check, productId })
         // check if product is in stock based on quantity
         const hasEnoughProducts = await prisma.product.findFirst({
           where: {
@@ -69,7 +68,6 @@ export default {
 
         // if cartId is passed, use that
         if (cartId) {
-          console.log('has cartId')
           cart = await prisma.cart.findFirst({
             where: {
               AND: [{ id: cartId }, { isCheckedOut: false }],
@@ -77,7 +75,6 @@ export default {
           })
 
           if (!cart) {
-            console.log('cart not found/checked out so creating new one')
             // create new cart
             cart = await prisma.cart.create({
               data: {
@@ -93,12 +90,9 @@ export default {
             },
           })
 
-          console.log({ userCart })
           if (userCart) {
-            console.log('user has unchecked out cart')
             cart = userCart
           } else {
-            console.log('user has no cart so creating new one')
             // create new cart
             cart = await prisma.cart.create({
               data: {
@@ -107,8 +101,6 @@ export default {
             })
           }
         }
-
-        console.log({ cart })
 
         const priceInCents = hasEnoughProducts.price * safeQuantity
 
@@ -153,10 +145,8 @@ export default {
           throw new ApolloError('Cart not found')
         }
 
-        console.log('create new cart item', cart)
         const reCheck = await prisma.cart.findMany()
 
-        console.log({ reCheck })
         // add product to cart
         const newCartItem = prisma.cartItem.create({
           data: {
