@@ -6,8 +6,8 @@ import {
   customerFactory,
   prisma,
   productFactory,
-} from '../../../../utils'
-import resolvers from '../index'
+} from 'src/utils'
+import resolvers from '../../index'
 
 let context: Context
 

@@ -6,8 +6,8 @@ import {
   customerFactory,
   prisma,
   productFactory,
-} from '../../../../utils'
-import resolvers from '../index'
+} from 'src/utils'
+import resolvers from '../../index'
 
 let context: Context
 
@@ -52,7 +52,7 @@ test('should remove existing item from cart if ids are valid', async () => {
     Mutation: { addToCart, removeFromCart },
   } = resolvers
 
-  const cartA = cartFactory.build({ id: 10, customerId: 1 })
+  const cartA = cartFactory.build({ id: 50, customerId: 1 })
 
   // create the cart
   const cart = await prisma.cart.create({
