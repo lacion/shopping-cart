@@ -76,7 +76,7 @@ yarn dev
 
 The project should now be available at http://localhost:4000
 
-![graphql playground](https://i.imgur.com/Gy9arjH.png)
+![graphql playground](https://i.imgur.com/h1xqghS.png)
 
 Start the db viewer in another terminal to view your database
 
@@ -152,3 +152,4 @@ A running changelog can be found here: [CHANGELOG.md](CHANGELOG.md)
 | 0.0.1   | Kudakwashe Mupeni <kudamupeni@gmail.com> | 20/09/2021 |
 | 0.0.2   | Kudakwashe Mupeni <kudamupeni@gmail.com> | 21/09/2021 |
 | 0.0.3   | Kudakwashe Mupeni <kudamupeni@gmail.com> | 24/09/2021 |
+| 0.0.4   | Kezian Naidoo <kezian.naidoo@icloud.com> | 12/10/2021 |
