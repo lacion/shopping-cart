@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/2wce/shopping-cart/compare/v1.13.0...v1.14.0) (2021-10-12)
+
+
+### Features
+
+* **readme:** update playground image on readme ([393bb6f](https://github.com/2wce/shopping-cart/commit/393bb6f9f95c142b81496b5fa7fea2e89a1dacac))
+
 # [1.13.0](https://github.com/2wce/shopping-cart/compare/v1.12.0...v1.13.0) (2021-10-11)
 
 
