@@ -16,7 +16,7 @@ describe('Auth - Login', () => {
       Query: { login },
     } = resolvers
 
-    let args = { email: '' }
+    const args = { email: '' }
 
     // test
     const result = await login({}, args, context)
@@ -31,7 +31,7 @@ describe('Auth - Login', () => {
       Query: { login },
     } = resolvers
 
-    let args = { email: 't@g.com' }
+    const args = { email: 't@g.com' }
 
     // test
     const result = await login({}, args, context)
@@ -46,7 +46,7 @@ describe('Auth - Login', () => {
       Query: { login },
     } = resolvers
 
-    let args = { email: 't' }
+    const args = { email: 't' }
 
     // test
     const result = await login({}, args, context)

@@ -16,7 +16,7 @@ describe('Product - get products', () => {
       Query: { products },
     } = resolvers
 
-    let args = { filterBy: { categoryId: 0 } }
+    const args = { filterBy: { categoryId: 0 } }
 
     // test
     const result = await products({}, args, context)
@@ -31,7 +31,7 @@ describe('Product - get products', () => {
       Query: { products },
     } = resolvers
 
-    let args = { filterBy: { skip: 0, take: 10 } }
+    const args = { filterBy: { skip: 0, take: 10 } }
 
     const product = {
       id: 1,
