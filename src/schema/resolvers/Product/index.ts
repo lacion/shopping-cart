@@ -1,7 +1,7 @@
 import { Prisma, Product } from '@prisma/client'
 import { ApolloError } from 'apollo-server'
-import { QueryProductsArgs } from 'src/generated'
-import { Context, formatError, formatPrice } from 'src/utils'
+import { QueryProductsArgs } from '../../../generated'
+import { Context, formatError, formatPrice } from '../../../utils'
 
 export default {
   Query: {

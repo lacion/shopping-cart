@@ -1,7 +1,7 @@
 import { Cart } from '@prisma/client'
 import { ApolloError } from 'apollo-server'
-import { MutationAddToCartArgs } from 'src/generated'
-import { Context, formatError } from 'src/utils'
+import { MutationAddToCartArgs } from '../../../../generated'
+import { Context, formatError } from '../../../../utils'
 
 export default async (
   _parent: unknown,

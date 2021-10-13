@@ -1,6 +1,6 @@
 import { ApolloError } from 'apollo-server'
-import { MutationRemoveFromCartArgs } from 'src/generated'
-import { Context, formatError } from 'src/utils'
+import { MutationRemoveFromCartArgs } from '../../../../generated'
+import { Context, formatError } from '../../../../utils'
 
 export default async (
   _parent: unknown,
