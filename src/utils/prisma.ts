@@ -46,29 +46,31 @@ export function createContext(request: any) {
 export const clearData = async () => {
   try {
     const transactions: PrismaPromise<any>[] = []
-    transactions.push(prisma.$executeRaw`SET FOREIGN_KEY_CHECKS = 0;`)
+    await prisma.$executeRaw`SET FOREIGN_KEY_CHECKS = 0;`
 
     const tables: Array<TableList> =
-      await prisma.$queryRaw`SELECT TABLE_NAME from information_schema.TABLES WHERE TABLE_SCHEMA = 'tests';`
+      await prisma.$queryRaw`SELECT TABLE_NAME from information_schema.TABLES WHERE TABLE_SCHEMA = 'shopping-test';`
 
     for (const { TABLE_NAME } of tables) {
       if (TABLE_NAME !== '_prisma_migrations') {
         try {
-          transactions.push(
-            prisma.$executeRaw(
-              `TRUNCATE ${TABLE_NAME};` as unknown as TemplateStringsArray,
-            ),
-          )
+          transactions.push(prisma.$executeRawUnsafe(`TRUNCATE ${TABLE_NAME};`))
         } catch (error) {
           console.log({ error })
         }
       }
     }
 
-    transactions.push(prisma.$executeRaw`SET FOREIGN_KEY_CHECKS = 1;`)
-
-    await prisma.$transaction(transactions)
+    transactions.forEach(async (transaction) => {
+      try {
+        await transaction
+      } catch (error) {
+        console.log({ error })
+      }
+    })
+    await prisma.$executeRaw`SET FOREIGN_KEY_CHECKS = 1;`
   } catch (error) {
     console.error(error)
+    return error
   }
 }
