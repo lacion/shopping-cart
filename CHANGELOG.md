@@ -1,3 +1,11 @@
+## [1.19.1](https://github.com/2wce/shopping-cart/compare/v1.19.0...v1.19.1) (2021-10-13)
+
+
+### Bug Fixes
+
+* add user payload ([a8077de](https://github.com/2wce/shopping-cart/commit/a8077deb4f99e50995c099aeed3c2e4ba657e669))
+* fix payload type ([e58ba28](https://github.com/2wce/shopping-cart/commit/e58ba28ecc05bc0e34c1b53258afc70843b6dfe0))
+
 # [1.19.0](https://github.com/2wce/shopping-cart/compare/v1.18.0...v1.19.0) (2021-10-13)
 
 ### Features
