@@ -12,7 +12,7 @@ export default async (
       throw new ApolloError('Cart ID is required')
     }
 
-    return prisma.cart.findUnique({
+    return await prisma.cart.findUnique({
       where: {
         id,
       },
