@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/2wce/shopping-cart/compare/v1.18.0...v1.19.0) (2021-10-13)
+
+
+### Features
+
+* **refactor:** added await to cart query ([f519791](https://github.com/2wce/shopping-cart/commit/f519791279f63699a46adad20821d4194af0a051))
+
 # [1.18.0](https://github.com/2wce/shopping-cart/compare/v1.17.0...v1.18.0) (2021-10-13)
 
 ### Features
