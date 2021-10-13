@@ -1,6 +1,6 @@
 import { ApolloError } from 'apollo-server'
-import { MutationCheckoutArgs } from 'src/generated'
-import { Context, formatError } from 'src/utils'
+import { MutationCheckoutArgs } from '../../../../generated'
+import { Context, formatError } from '../../../../utils'
 
 export default async (
   _parent: unknown,
