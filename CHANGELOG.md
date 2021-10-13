@@ -1,9 +1,8 @@
 # [1.18.0](https://github.com/2wce/shopping-cart/compare/v1.17.0...v1.18.0) (2021-10-13)
 
-
 ### Features
 
-* **refactor:** removed let and add const ([42dddaa](https://github.com/2wce/shopping-cart/commit/42dddaa1a7489a7e7998a26b869e32fe9cc927b3))
+- **refactor:** removed let and add const ([42dddaa](https://github.com/2wce/shopping-cart/commit/42dddaa1a7489a7e7998a26b869e32fe9cc927b3))
 
 # [1.17.0](https://github.com/2wce/shopping-cart/compare/v1.16.0...v1.17.0) (2021-10-12)
 
