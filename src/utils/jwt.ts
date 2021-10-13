@@ -30,10 +30,9 @@ export function getUserId({ req }: Context): string | undefined {
 }
 
 // issue new token based on payload
-export const issue = (payload: Payload, jwtOptions = {}) => {
-  return sign(
-    clone(payload.toJSON ? payload.toJSON() : payload),
-    process.env.JWT_SECRET as string,
-    { ...jwtOptions, expiresIn: '1d' },
-  )
+export const issue = (payload: string | object | Buffer, jwtOptions = {}) => {
+  return sign(clone(payload), process.env.JWT_SECRET as string, {
+    ...jwtOptions,
+    expiresIn: '1d',
+  })
 }
