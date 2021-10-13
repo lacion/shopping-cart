@@ -39,7 +39,7 @@ export default {
     ) => {
       try {
         const { productId, quantity, cartId } = input
-        let safeQuantity = quantity > 0 ? quantity : 1
+        const safeQuantity = quantity > 0 ? quantity : 1
 
         // no specific product id passed.
         if (!productId) {
