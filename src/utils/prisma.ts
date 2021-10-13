@@ -34,7 +34,7 @@ export const createMockContext = (): MockContext => {
 export const prisma = new PrismaClient()
 
 // add prisma to context for resolvers
-export function createContext(request: any) {
+export function createContext(request: Context) {
   const userId = getUserId(request)
   return {
     ...request,
@@ -45,7 +45,7 @@ export function createContext(request: any) {
 
 export const clearData = async () => {
   try {
-    const transactions: PrismaPromise<any>[] = []
+    const transactions: PrismaPromise<unknown>[] = []
     await prisma.$executeRaw`SET FOREIGN_KEY_CHECKS = 0;`
 
     const tables: Array<TableList> =
@@ -61,13 +61,16 @@ export const clearData = async () => {
       }
     }
 
-    transactions.forEach(async (transaction) => {
-      try {
-        await transaction
-      } catch (error) {
-        console.log({ error })
-      }
-    })
+    await Promise.all(
+      transactions.map(async (transaction) => {
+        try {
+          await transaction
+        } catch (error) {
+          console.log({ error })
+        }
+      }),
+    )
+
     await prisma.$executeRaw`SET FOREIGN_KEY_CHECKS = 1;`
   } catch (error) {
     console.error(error)
