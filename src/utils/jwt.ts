@@ -6,6 +6,10 @@ interface Token {
   id: string
 }
 
+interface Payload {
+  toJSON?: Function
+}
+
 // get user id from auth token
 export function getUserId({ req }: Context): string | undefined {
   if (req) {
@@ -26,7 +30,7 @@ export function getUserId({ req }: Context): string | undefined {
 }
 
 // issue new token based on payload
-export const issue = (payload: any, jwtOptions = {}) => {
+export const issue = (payload: Payload, jwtOptions = {}) => {
   return sign(
     clone(payload.toJSON ? payload.toJSON() : payload),
     process.env.JWT_SECRET as string,
