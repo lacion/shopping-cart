@@ -1,4 +1,4 @@
-import { Cart } from '@prisma/client'
+import { Cart, CartItem } from '@prisma/client'
 import { Context, formatError, formatPrice } from '../../../utils'
 import Mutation from './Mutation'
 import Query from './Query'
@@ -34,7 +34,7 @@ export default {
           .cartItems()
 
         // sum up all cart items prices for total
-        const total = cartItems.reduce((acc: number,item) => acc + item.price as number, 0)
+        const total = cartItems.reduce((acc: number,item: CartItem) => acc + item.price as number, 0)
 
         return formatPrice(total)
       } catch (error) {
