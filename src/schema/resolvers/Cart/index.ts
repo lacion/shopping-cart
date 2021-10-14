@@ -35,7 +35,7 @@ export default {
 
         // sum up all cart items prices for total
         const total = cartItems.reduce(
-          (acc: number, item: CartItem) => (acc + Number(item.price)),
+          (acc: number, item: CartItem) => acc + Number(item.price),
           0,
         )
 
