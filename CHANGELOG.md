@@ -1,12 +1,11 @@
 # [1.20.0](https://github.com/2wce/shopping-cart/compare/v1.19.1...v1.20.0) (2021-10-14)
 
-
 ### Features
 
-* **type:** added types to cart items total ([96f3525](https://github.com/2wce/shopping-cart/commit/96f35256551aaabcad22ae96ce5834655bebbfd5))
-* **type:** update types ([ca21be2](https://github.com/2wce/shopping-cart/commit/ca21be2a5ace2ee45f01492c35cd89164a48335f))
-* **type:** updated types for cartitem ([285eb60](https://github.com/2wce/shopping-cart/commit/285eb609b23d6aecb6a9e5ffbe65669918302290))
-* **types:** added types ([414bb44](https://github.com/2wce/shopping-cart/commit/414bb4427228c6793c854772ead2860f81b3527f))
+- **type:** added types to cart items total ([96f3525](https://github.com/2wce/shopping-cart/commit/96f35256551aaabcad22ae96ce5834655bebbfd5))
+- **type:** update types ([ca21be2](https://github.com/2wce/shopping-cart/commit/ca21be2a5ace2ee45f01492c35cd89164a48335f))
+- **type:** updated types for cartitem ([285eb60](https://github.com/2wce/shopping-cart/commit/285eb609b23d6aecb6a9e5ffbe65669918302290))
+- **types:** added types ([414bb44](https://github.com/2wce/shopping-cart/commit/414bb4427228c6793c854772ead2860f81b3527f))
 
 ## [1.19.1](https://github.com/2wce/shopping-cart/compare/v1.19.0...v1.19.1) (2021-10-13)
 
