@@ -2,7 +2,7 @@
 
 ## Overview
 
-Prisma Template contributing guidelines.
+SC contributing guidelines.
 
 ## Commit Message Guidelines
 
@@ -116,9 +116,9 @@ Write your code in your new branch.
 
 Commit frequently, while adhering to project's standard [commit message guidelines](#commit-message-guidelines)
 
-##### 4. Create a pull request on Bitbucket
+##### 4. Create a pull request on Github
 
-Include the Jira ticket number (if applicable) in either the PR title or description body
+Include the issue number (if applicable) in either the PR title or description body
 
 ##### 5. Submit for review
 
@@ -126,7 +126,7 @@ Include the Jira ticket number (if applicable) in either the PR title or descrip
 
 ##### 6. Merge changes
 
-Once at least one approval has been made (project dependant), the changes can then be merged into the destination branch. The PR opener is responsible for merging their PR.
+Once at least one approval has been made, the changes can then be merged into the destination branch. The PR opener is responsible for merging their PR.
 
 ### Pull Request Template
 
@@ -207,3 +207,4 @@ If you changed the UI or UX include a screenshot, video or gif
 | Version | Author                                   | Date       |
 | ------- | ---------------------------------------- | ---------- |
 | 0.0.1   | Kudakwashe Mupeni <kudamupeni@gmail.com> | 14/10/2021 |
+| 0.0.2   | Kudakwashe Mupeni <kudamupeni@gmail.com> | 14/10/2021 |
