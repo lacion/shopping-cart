@@ -1,23 +1,20 @@
 # [1.23.0](https://github.com/2wce/shopping-cart/compare/v1.22.0...v1.23.0) (2021-10-30)
 
-
 ### Features
 
-* update auth folder ([4c6fba1](https://github.com/2wce/shopping-cart/commit/4c6fba17fd8ddb3a0aa4049da39be6adefc8a5e9))
+- update auth folder ([4c6fba1](https://github.com/2wce/shopping-cart/commit/4c6fba17fd8ddb3a0aa4049da39be6adefc8a5e9))
 
 # [1.22.0](https://github.com/2wce/shopping-cart/compare/v1.21.0...v1.22.0) (2021-10-30)
 
-
 ### Features
 
-* update cart item folder ([bda4616](https://github.com/2wce/shopping-cart/commit/bda46166d670c904d4981e0d84b236b404c82d2e))
+- update cart item folder ([bda4616](https://github.com/2wce/shopping-cart/commit/bda46166d670c904d4981e0d84b236b404c82d2e))
 
 # [1.21.0](https://github.com/2wce/shopping-cart/compare/v1.20.0...v1.21.0) (2021-10-30)
 
-
 ### Features
 
-* upgrade prisma ([bbccbc1](https://github.com/2wce/shopping-cart/commit/bbccbc138a1b08cd9968a2233ee1086651c45ae9))
+- upgrade prisma ([bbccbc1](https://github.com/2wce/shopping-cart/commit/bbccbc138a1b08cd9968a2233ee1086651c45ae9))
 
 # [1.20.0](https://github.com/2wce/shopping-cart/compare/v1.19.1...v1.20.0) (2021-10-14)
 
