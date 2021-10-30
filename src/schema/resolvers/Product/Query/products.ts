@@ -13,7 +13,7 @@ export default async (
     const formattedSkip = skip ? skip : 0
     const formattedTake = take ? take : 10
 
-    let and: Prisma.Enumerable<Prisma.ProductWhereInput> = []
+    const and: Prisma.Enumerable<Prisma.ProductWhereInput> = []
 
     // no specific filter passed.
     if (!categoryId && !name) {
