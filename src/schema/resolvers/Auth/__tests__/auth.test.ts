@@ -1,5 +1,5 @@
 import { Context, createMockContext, MockContext } from '../../../../utils'
-import resolvers from '../index'
+import mutations from '../Mutation'
 
 let mockCtx: MockContext
 let context: Context
@@ -12,9 +12,7 @@ beforeEach(() => {
 describe('Auth - Login', () => {
   it('returns an error if invalid input is parsed', async () => {
     // setup
-    const {
-      Query: { login },
-    } = resolvers
+    const { login } = mutations
 
     const args = { email: '' }
 
@@ -27,9 +25,7 @@ describe('Auth - Login', () => {
 
   it('returns an error if only email is parsed', async () => {
     // setup
-    const {
-      Query: { login },
-    } = resolvers
+    const { login } = mutations
 
     const args = { email: 't@g.com' }
 
@@ -42,9 +38,7 @@ describe('Auth - Login', () => {
 
   it('returns an error if email has invalid email format', async () => {
     // setup
-    const {
-      Query: { login },
-    } = resolvers
+    const { login } = mutations
 
     const args = { email: 't' }
 

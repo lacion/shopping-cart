@@ -64,12 +64,14 @@ export default gql`
   }
 
   type Query {
-    login(email: String!): String
     cart(id: Int!): Cart
     products(filterBy: GetProductsInput!): [Product]
   }
 
   type Mutation {
+    # Auth
+    login(email: String!): String
+
     addToCart(input: AddToCartInput!): Cart
     removeFromCart(input: RemoveFromCartInput!): Cart
     updateQuantity(input: UpdateQuantityInput!): CartItem
