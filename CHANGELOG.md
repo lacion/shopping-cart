@@ -7,10 +7,9 @@
 
 # [1.22.0](https://github.com/2wce/shopping-cart/compare/v1.21.0...v1.22.0) (2021-10-30)
 
-
 ### Features
 
-* update cart item folder ([bda4616](https://github.com/2wce/shopping-cart/commit/bda46166d670c904d4981e0d84b236b404c82d2e))
+- update cart item folder ([bda4616](https://github.com/2wce/shopping-cart/commit/bda46166d670c904d4981e0d84b236b404c82d2e))
 
 # [1.21.0](https://github.com/2wce/shopping-cart/compare/v1.20.0...v1.21.0) (2021-10-30)
 
