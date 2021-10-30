@@ -1,9 +1,8 @@
 # [1.23.0](https://github.com/2wce/shopping-cart/compare/v1.22.0...v1.23.0) (2021-10-30)
 
-
 ### Features
 
-* update auth folder ([4c6fba1](https://github.com/2wce/shopping-cart/commit/4c6fba17fd8ddb3a0aa4049da39be6adefc8a5e9))
+- update auth folder ([4c6fba1](https://github.com/2wce/shopping-cart/commit/4c6fba17fd8ddb3a0aa4049da39be6adefc8a5e9))
 
 # [1.22.0](https://github.com/2wce/shopping-cart/compare/v1.21.0...v1.22.0) (2021-10-30)
 
