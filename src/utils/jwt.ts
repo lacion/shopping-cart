@@ -3,14 +3,14 @@ import { clone } from 'lodash'
 import { Context } from './prisma'
 
 interface Token {
-  id: string
+  id: number
 }
 
 type User = {
   id: number
 }
 // get user id from auth token
-export function getUserId({ req }: Context): string | undefined {
+export function getUserId({ req }: Context): number | undefined {
   if (req) {
     const Authorization = req.headers.authorization || req.headers.Authorization
 

@@ -14,17 +14,19 @@ export default {
       return Boolean(!userId)
     },
   ),
-  isPostOwner: rule()(
-    async (_parent: unknown, { id }: { id: number }, context) => {
+  isCartOwner: rule()(
+    async (_parent: unknown, { id }: { id: number }, context: Context) => {
       const userId = getUserId(context)
-      const author = await context.prisma.post
-        .findOne({
+
+      const customer = await context.prisma.cart
+        .findFirst({
           where: {
             id: Number(id),
           },
         })
-        .author()
-      return userId === author.id
+        .customer()
+
+      return userId === customer?.id
     },
   ),
 }
