@@ -1,23 +1,19 @@
 import { shield } from 'graphql-shield'
 import rules from './rules'
 
-const { isAuthenticatedUser, isPostOwner, isUnauthenticatedUser } = rules
+const { isAuthenticatedUser, isCartOwner, isUnauthenticatedUser } = rules
 
 export default shield({
   Query: {
-    me: isAuthenticatedUser,
-    posts: isUnauthenticatedUser,
-    post: isAuthenticatedUser,
+    cart: isAuthenticatedUser,
+    products: isAuthenticatedUser,
   },
   Mutation: {
-    signup: isUnauthenticatedUser,
     login: isUnauthenticatedUser,
-    resetPassword: isUnauthenticatedUser,
-    forgotPassword: isUnauthenticatedUser,
 
-    createDraft: isAuthenticatedUser,
-    deletePost: isPostOwner,
-    publish: isPostOwner,
-    updatePost: isPostOwner,
+    addToCart: isCartOwner,
+    removeFromCart: isCartOwner,
+    updateQuantity: isCartOwner,
+    checkout: isCartOwner,
   },
 })
