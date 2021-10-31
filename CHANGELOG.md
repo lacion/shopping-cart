@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/2wce/shopping-cart/compare/v1.26.0...v1.27.0) (2021-10-31)
+
+
+### Features
+
+* setup husky ([2087436](https://github.com/2wce/shopping-cart/commit/20874361c85bb815d000258fd9e99c6c50c6edc8))
+
 # [1.26.0](https://github.com/2wce/shopping-cart/compare/v1.25.0...v1.26.0) (2021-10-31)
 
 
