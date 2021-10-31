@@ -1,9 +1,8 @@
 # [1.25.0](https://github.com/2wce/shopping-cart/compare/v1.24.0...v1.25.0) (2021-10-31)
 
-
 ### Features
 
-* setup permissions ([6ef35b6](https://github.com/2wce/shopping-cart/commit/6ef35b61e838c69d8680864a8c67f071b9198455))
+- setup permissions ([6ef35b6](https://github.com/2wce/shopping-cart/commit/6ef35b61e838c69d8680864a8c67f071b9198455))
 
 # [1.24.0](https://github.com/2wce/shopping-cart/compare/v1.23.0...v1.24.0) (2021-10-30)
 
@@ -13,7 +12,6 @@
 - update products folder ([ce0119f](https://github.com/2wce/shopping-cart/commit/ce0119f5b5b4606b7828fd3efa6491a7028af1d4))
 
 # [1.23.0](https://github.com/2wce/shopping-cart/compare/v1.22.0...v1.23.0) (2021-10-30)
-
 
 ### Features
 
