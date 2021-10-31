@@ -1,9 +1,8 @@
 # [1.26.0](https://github.com/2wce/shopping-cart/compare/v1.25.0...v1.26.0) (2021-10-31)
 
-
 ### Features
 
-* update permission rules ([6083118](https://github.com/2wce/shopping-cart/commit/6083118d32ea02732afa1d0b77c1a0fe64f105c0))
+- update permission rules ([6083118](https://github.com/2wce/shopping-cart/commit/6083118d32ea02732afa1d0b77c1a0fe64f105c0))
 
 # [1.25.0](https://github.com/2wce/shopping-cart/compare/v1.24.0...v1.25.0) (2021-10-31)
 
